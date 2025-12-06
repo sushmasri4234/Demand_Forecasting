@@ -8,10 +8,10 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements
-COPY requirements_auth.txt .
+COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements_auth.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application
 COPY . .
@@ -23,8 +23,8 @@ RUN mkdir -p uploads models logs
 EXPOSE 5000
 
 # Set environment variables
-ENV FLASK_APP=run.py
+ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 
 # Run application
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--timeout", "120", "run:app"]
+CMD ["python", "app.py"]
