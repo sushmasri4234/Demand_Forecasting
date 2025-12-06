@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Data{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h2>📤 Upload CSV Data</h2>
+        <p class="text-muted">Upload a CSV file with columns: date, product_id, demand</p>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Select CSV File</label>
+                        <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload and Process</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h5>CSV Format Example:</h5>
+            <pre class="bg-light p-3">
+date,product_id,demand
+2023-01-01,101,150
+2023-01-02,101,145
+2023-01-03,102,200
+...</pre>
+            <p class="text-muted small">Daily data will be automatically converted to weekly aggregates.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

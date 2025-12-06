@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Train Model{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h2>🤖 Train Forecasting Model</h2>
+        <p class="text-muted">Select a product to train a RandomForest forecasting model</p>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <form method="POST" action="/train">
+                    <div class="mb-3">
+                        <label for="product_id" class="form-label">Select Product</label>
+                        <select class="form-select" id="product_id" name="product_id" required>
+                            <option value="">Choose a product...</option>
+                            {% for product in products %}
+                                <option value="{{ product }}">Product {{ product }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Train Model</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h5>Training Process:</h5>
+            <ul>
+                <li>Creates 12 lag features + rolling averages</li>
+                <li>Adds week-of-year seasonality</li>
+                <li>80/20 train/test split</li>
+                <li>Trains RandomForest with 100 trees</li>
+                <li>Computes MAE on test set</li>
+                <li>Saves model for future predictions</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

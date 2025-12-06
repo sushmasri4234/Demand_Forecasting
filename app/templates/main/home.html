@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Home - Demand Forecasting{% endblock %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-8 offset-md-2 text-center">
+        <h1 class="display-4">🛒 Retail Demand Forecasting</h1>
+        <p class="lead mt-4">AI-powered weekly demand forecasting with secure authentication</p>
+        <div class="row mt-5">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">📤 Upload Data</h5>
+                        <p class="card-text">Upload CSV files with demand data</p>
+                        <a href="{{ url_for('main.upload') }}" class="btn btn-primary">Upload</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🤖 Train Model</h5>
+                        <p class="card-text">Train ML models for products</p>
+                        <a href="{{ url_for('main.train_select') }}" class="btn btn-primary">Train</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🔮 Predict</h5>
+                        <p class="card-text">Generate demand forecasts</p>
+                        <a href="{{ url_for('main.predict') }}" class="btn btn-primary">Predict</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">📊 Dashboard</h5>
+                        <p class="card-text">Interactive visualizations</p>
+                        <a href="{{ url_for('main.dashboard') }}" class="btn btn-primary">Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Predict Demand{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-6 offset-md-3">
+        <h2>🔮 Predict Future Demand</h2>
+        <p class="text-muted">Generate forecasts for future weeks using trained models</p>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <form method="POST">
+                    <div class="mb-3">
+                        <label for="product_id" class="form-label">Select Product</label>
+                        <select class="form-select" id="product_id" name="product_id" required>
+                            <option value="">Choose a product...</option>
+                            {% for product in products %}
+                                <option value="{{ product }}">Product {{ product }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="n_weeks" class="form-label">Number of Weeks to Forecast</label>
+                        <input type="number" class="form-control" id="n_weeks" name="n_weeks" 
+                               value="12" min="1" max="52" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Generate Forecast</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <h5>Forecasting Method:</h5>
+            <p>Uses autoregressive approach where each prediction feeds into the next, 
+               incorporating lag features, rolling averages, and seasonality.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

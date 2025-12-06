@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Demand Forecasting{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-8 offset-md-2 text-center">
+        <h1 class="display-4">🛒 Retail Demand Forecasting</h1>
+        <p class="lead mt-4">AI-powered weekly demand forecasting for retail products</p>
+        
+        <div class="row mt-5">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">📤 Upload Data</h5>
+                        <p class="card-text">Upload your CSV file with date, product_id, and demand columns</p>
+                        <a href="/upload" class="btn btn-primary">Upload CSV</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🤖 Train Model</h5>
+                        <p class="card-text">Train machine learning models for specific products</p>
+                        <a href="/train_select" class="btn btn-primary">Train Model</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">🔮 Predict</h5>
+                        <p class="card-text">Generate future demand forecasts for trained products</p>
+                        <a href="/predict" class="btn btn-primary">Make Predictions</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">📊 Dashboard</h5>
+                        <p class="card-text">Visualize historical data and forecasts interactively</p>
+                        <a href="/dashboard" class="btn btn-primary">View Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-5">
+            <h4>Features</h4>
+            <ul class="list-unstyled">
+                <li>✅ Automatic daily to weekly data conversion</li>
+                <li>✅ 12 lag features + rolling averages</li>
+                <li>✅ RandomForest ML models per product</li>
+                <li>✅ Autoregressive forecasting</li>
+                <li>✅ Interactive Plotly visualizations</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

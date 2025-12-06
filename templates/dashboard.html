@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col-md-12">
+        <h2>📊 Demand Forecasting Dashboard</h2>
+        <p class="text-muted">Interactive visualization of historical demand and forecasts</p>
+        
+        <div class="card mt-4">
+            <div class="card-body">
+                <div id="plotly-chart"></div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <p class="text-muted">
+                <strong>Blue line:</strong> Historical weekly demand | 
+                <strong>Red dashed line:</strong> 12-week forecast (if model trained)
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var graphs = {{ graph_json|safe }};
+    Plotly.newPlot('plotly-chart', graphs.data, graphs.layout);
+</script>
+{% endblock %}
